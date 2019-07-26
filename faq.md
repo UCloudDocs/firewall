@@ -29,7 +29,7 @@ UDP：135,445,593,1026,1027,1068,1434,4444,5554,9996
 
 ### 内网是否有防火墙?
 
-内网访问控制可使用[网络ACL](/vpc/introduction/acl)
+内网访问控制可使用[网络ACL](/network/vpc/introduction/acl)
 
 ### 我的内网主机如何与其他人的主机隔离?
 
@@ -41,11 +41,11 @@ UCloud的内网使用了软件定义网络（SDN）技术，以此来实现不�
 
 通常情况下，防火墙规则是立即生效的。但某些场景下，防火墙场景并不会立即生效。
 
-以Nginx为例，Nginx会在触发keepalive\\\_timeout（默认为65秒）之后，发送FIN包，让nf\\\_conntrac\\\_tcp\\\_timeout\\\_established不再起作用，转而触发nf\\\_conntrack\\\_tcp\\\_timeout\\\_time\\\_wait的规则，而它的默认规则为120秒。
+以Nginx为例，Nginx会在触发keepalive_timeout（默认为65秒）之后，发送FIN包，使得Conntrack失效。
 
 在这种场景，防火墙生效最多需要两分钟。
 
-而对于类似于MySQL的长连接场景，由于nf\\\_conntrack\\\_tcp\\\_timeout\\\_established这个系统内核及参数设置其默认的失效时间为5天，这种场景一旦连接建立，通过修改防火墙的方式很难立即阻断连接。
+而对于类似于MySQL的长连接场景，由于nf_conntrack_tcp_timeout_established这个系统内核及参数设置其默认的失效时间为5天，这种场景一旦连接建立，通过修改防火墙的方式很难立即阻断连接。
 
 #### 防火墙未立即生效的补救措施：
 
