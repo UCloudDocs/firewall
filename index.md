@@ -6,6 +6,6 @@
 
 **目录**
 
-[firewall](/network/firewall/firewall)
+[firewall](/firewall/firewall)
 
-[faq](/network/firewall/faq)
+[faq](/firewall/faq)
